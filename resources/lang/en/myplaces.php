@@ -19,7 +19,7 @@ return [
         'loadedphotos' => 'Photos been loaded',
         'myfavplaces' => 'My favourite places',
         'nophoto' => 'No photos',
-        'noplaces' => 'There`s no places',
+        'noplaces' => 'There are no places',
         'placerating' => 'Place`s rating',
     ],
     'types' => [
@@ -45,7 +45,7 @@ return [
         'ratings' => 'Ratings',
     ],
     'menu' => [
-        'addphotoatplace' => 'Add photo at a place',
+        'addphotoatplace' => 'Add photo for a place',
         'allplaces' => 'All places',
         'placecreate' => 'Create a place',
         'ratingreview' => 'Review of ratings',

@@ -12,10 +12,10 @@
           rel="stylesheet">
     @if($listset->count())
         <link rel="stylesheet" href="/css/default.css" type="text/css">
-        <script src="/js/places.js"></script>
     @else
         <link rel="stylesheet" href="/css/emptylist.css" type="text/css">
     @endif
+    <script src="/js/places.js"></script>
 </head>
 <body>
     @if($listset->count())
@@ -23,5 +23,6 @@
     @else
         @yield('emptyhdr')
     @endif
+    @include('locale')
 </body>
 </html>

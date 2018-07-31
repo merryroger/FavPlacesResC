@@ -12,6 +12,7 @@
           rel="stylesheet">
     <link rel="stylesheet" href="/css/default.css" type="text/css">
     <link rel="stylesheet" href="/css/forms.css" type="text/css">
+    <script src="/js/places.js"></script>
 </head>
 <body>
     @yield('hdr')
@@ -23,5 +24,6 @@
             @endforeach
         </div>
     @endif
+    @include('locale')
 </body>
 </html>

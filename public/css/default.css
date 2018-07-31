@@ -344,3 +344,32 @@ tr.rt_item_row:hover {
 .rt_item_row span {
     border-bottom: 1px dotted #bbbbbb;
 }
+
+div.lcp {
+    position:absolute;
+    top: 150px;
+    right: 2px;
+    z-index:50;
+}
+
+div.loc {
+    padding: 8px 8pt;
+    text-align: center;
+    font: 400 11pt 'Fira Sans Extra Condensed', sans-serif;
+    border-radius: 3px;
+}
+
+.acl {
+    color: #6c757d;
+    background-color: transparent;
+}
+
+.icl {
+    color: #ffffff;
+    background-color: #6c757d;
+    cursor: pointer;
+}
+
+.icl a {
+    color: #ffffff;
+}

@@ -23,11 +23,15 @@ Route::prefix('places')->group(function () {
 
     Route::resource('/photo', 'PictureController')->only(['show', 'store', 'destroy']);
 
+    Route::resource('/mobile', 'MobileController')->only(['index', 'show']);
+
 });
 
 Route::middleware('menu')->group(function () {
     Route::get('/photos/add', 'PlaceController@addAnyPhoto')->name('photo.get_wildcard_form');
     Route::get('/rating', 'RatingController@index')->name('rating.show');
 });
+
+Route::get('/locale/{locale}', 'SysController@langChange')->name('change.locale');
 
 Route::redirect('/', route('place.index'));

@@ -12,7 +12,7 @@
                  style="background: #ffffff url('{{ Storage::url($item->location) }}') no-repeat top left; background-size: 100% auto; height: {{ round(800*$item->height/$item->width) }}px;">
                 <div class="photodata">{{ $item->created_at->format('d.m.Y H:i:s') }}</div>
                 <div class="photoctrl ph_delete" title="@lang('myplaces.places.delete')"
-                     onclick="confirmDeletePhoto('{{ route('photo.destroy', [$item->id]) }}', 'Удалить?');"></div>
+                     onclick="confirmDeletePhoto('{{ route('photo.destroy', [$item->id]) }}', '{{ __('myplaces.places.delete') }}?');"></div>
                 <br clear="all"/>
                 <div class="photodata ph_{{ $item->id }}">
                     <div class="ll like" title="@lang('myplaces.places.like')"

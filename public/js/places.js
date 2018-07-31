@@ -26,6 +26,11 @@ function downloadPhoto(url) {
     document.location.href = url;
 }
 
+function changeLocale(url) {
+    document.location.href = url;
+    return false;
+}
+
 function respLikes() {
     if (this.readyState == 4) {
         if (this.status == 200) {
