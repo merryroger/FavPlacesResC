@@ -1,14 +1,14 @@
 @extends('favlist')
 
 @section('listhdr')
-    @include('placeheader', ['placeid' => 0, 'placename' => 'Рейтинги', 'empty' => true])
+    @include('placeheader', ['placeid' => 0, 'placename' => __('myplaces.ratings.ratings'), 'empty' => true])
     <div class="rt_pad">
         <div class="rtc">
             <table class="rating">
-                <caption>Места</caption>
+                <caption>@lang('myplaces.ratings.places')</caption>
                 <tr>
                     <th class="th_rating"></th>
-                    <th class="th_rateditem">Место</th>
+                    <th class="th_rateditem">@lang('myplaces.ratings.place')</th>
                 </tr>
                 @foreach($rates as $lid => $rate)
                     <tr class="rt_item_row" onclick="document.location.href = '{{ route('place.show', $listset[$lid]->id) }}'">
@@ -20,10 +20,10 @@
         </div>
         <div class="rtc">
             <table class="rating">
-                <caption>Фотографии</caption>
+                <caption>@lang('myplaces.ratings.photos')</caption>
                 <tr>
                     <th class="th_rating"></th>
-                    <th class="th_rateditem">Фотография</th>
+                    <th class="th_rateditem">@lang('myplaces.ratings.photo')</th>
                 </tr>
                 @foreach($ph_rates as $lid => $rate)
                     <tr>

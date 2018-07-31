@@ -1,9 +1,9 @@
 @extends('appender')
 
-@section('title', 'Загрузка новой фотографии')
+@section('title', __('myplaces.forms.newphotoloading'))
 
 @section('hdr')
-    @include('formheader', ['text' => 'Новая фотка', 'cr' => Route::currentRouteName()])
+    @include('formheader', ['text' => __('myplaces.forms.newphoto'), 'cr' => Route::currentRouteName()])
 @endsection
 
 @section('form')
@@ -17,9 +17,9 @@
         </select>
         <div class="fmctrls">
             <button type="button" class="cancel" tabindex="3"
-                    onclick="document.location.href='{{ route('place.index') }}'; return false;">Отменить
+                    onclick="document.location.href='{{ route('place.index') }}'; return false;">@lang('myplaces.forms.cancel')
             </button>
-            <button type="submit" class="do" tabindex="4">Загрузить</button>
+            <button type="submit" class="do" tabindex="4">@lang('myplaces.forms.upload')</button>
         </div>
     </form>
 @endsection

@@ -11,7 +11,7 @@ class PlacetypesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('placetypes')->insert(['name' => 'Города']);
-        DB::table('placetypes')->insert(['name' => 'Острова']);
+        DB::table('placetypes')->insert(['name' => 'cities']);
+        DB::table('placetypes')->insert(['name' => 'islands']);
     }
 }

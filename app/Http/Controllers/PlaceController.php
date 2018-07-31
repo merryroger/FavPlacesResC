@@ -17,12 +17,7 @@ class PlaceController extends Controller
     public function index()
     {
         $listset = Place::all();
-        $placetypes = Placetype::all();
-        $types = [];
-
-        foreach ($placetypes as $pt) {
-            $types[$pt->id] = $pt->name;
-        }
+        $types = Placetype::all()->pluck('name', 'id');
 
         return view('placelist', compact('listset', 'types'));
     }
@@ -59,9 +54,8 @@ class PlaceController extends Controller
      * @param  \App\Models\Place $place
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Place $place)
     {
-        $place = Place::placeById($id)->first();
         $listset = $place->pictures->sortByDesc(function ($query) {
             return $query->created_at;
         });
@@ -69,10 +63,9 @@ class PlaceController extends Controller
         return view('showplace', compact('place', 'listset'));
     }
 
-    public function addPhoto(Request $request, $id)
+    public function addPhoto(Request $request, Place $place)
     {
         $referer = $request->server('HTTP_REFERER');
-        $place = Place::placeById($id)->first();
         $places = Place::all();
 
         return view('add_linked_photo', compact('places', 'place', 'referer'));
@@ -118,14 +111,13 @@ class PlaceController extends Controller
         //
     }
 
-    public function likePlace($id, $mark)
+    public function likePlace(Place $place, $mark)
     {
-        $place = Place::find($id);
         $place->ratings()->create(['mark' => $mark == 1]);
 
         $_response = [
             'target' => 'place',
-            'id' => $id,
+            'id' => $place->id,
             'likes' => $place->getLikes(),
             'dislikes' => $place->getDisLikes(),
             'placerating' => $place->calcRating()];

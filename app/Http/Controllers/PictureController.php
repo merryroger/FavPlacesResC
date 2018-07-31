@@ -95,10 +95,7 @@ class PictureController extends Controller
     public function destroy(Picture $photo)
     {
         $place = $photo->place;
-        $photo->ratings()->delete();
         $photo->delete();
-
-        Storage::disk('public')->delete($photo->location);
 
         if (!$place->pictures()->count()) {
             $place->ratings()->delete();
@@ -107,18 +104,17 @@ class PictureController extends Controller
         return redirect()->route('place.show', [$place->id]);
     }
 
-    public function likePhoto($id, $mark)
+    public function likePhoto(Picture $photo, $mark)
     {
-        $picture = Picture::find($id);
-        $picture->ratings()->create(['mark' => $mark == 1]);
-        $place = Picture::find($id)->place;
+        $photo->ratings()->create(['mark' => $mark == 1]);
+        $place = $photo->place;
 
         $_response = [
             'target' => 'photo',
-            'id' => $id,
-            'likes' => $picture->getLikes(),
-            'dislikes' => $picture->getDisLikes(),
-            'rating' => $picture->calcRating(),
+            'id' => $photo->id,
+            'likes' => $photo->getLikes(),
+            'dislikes' => $photo->getDisLikes(),
+            'rating' => $photo->calcRating(),
             'placerating' => $place->calcRating()];
 
         return response()->json($_response, 200);

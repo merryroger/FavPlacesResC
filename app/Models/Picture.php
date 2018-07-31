@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Picture extends Model
 {
@@ -31,6 +32,13 @@ class Picture extends Model
     public function calcRating()
     {
         return $this->getLikes() - $this->getDisLikes();
+    }
+
+    public function delete() {
+        $this->ratings()->delete();
+        Storage::disk('public')->delete($this->location);
+
+        return parent::delete();
     }
 
 }

@@ -14,15 +14,12 @@
 Route::prefix('places')->group(function () {
 
     Route::name('photo.')->group(function () {
-        Route::get('/{id}/{mark}/photos/like', 'PictureController@likePhoto')->name('like');
-        Route::get('/{id}/photos/add', 'PlaceController@addPhoto')->name('get_linked_form');
+        Route::get('/{photo}/{mark}/photos/like', 'PictureController@likePhoto')->name('like');
+        Route::get('/{place}/photos/add', 'PlaceController@addPhoto')->name('get_linked_form');
     });
 
-    Route::name('place.')->group(function () {
-        Route::get('/{id}/{mark}/places/like', 'PlaceController@likePlace')->name('like');
-        Route::get('/show/{id}', 'PlaceController@show')->name('show');
-        Route::resource('/', 'PlaceController')->except(['show', 'edit', 'update', 'destroy']);
-    });
+    Route::get('/{place}/{mark}/places/like', 'PlaceController@likePlace')->name('place.like');
+    Route::resource('/place', 'PlaceController')->except(['edit', 'update', 'destroy']);
 
     Route::resource('/photo', 'PictureController')->only(['show', 'store', 'destroy']);
 
@@ -33,4 +30,4 @@ Route::middleware('menu')->group(function () {
     Route::get('/rating', 'RatingController@index')->name('rating.show');
 });
 
-Route::redirect('/', 'places');
+Route::redirect('/', route('place.index'));
