@@ -122,6 +122,6 @@ class PlaceController extends Controller
             'dislikes' => $place->getDisLikes(),
             'placerating' => $place->calcRating()];
 
-        return response()->json($_response, 200);
+        return response()->json($_response);
     }
 }

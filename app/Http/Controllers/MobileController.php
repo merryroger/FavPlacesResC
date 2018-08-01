@@ -21,7 +21,7 @@ class MobileController extends Controller
     public function show(Place $place)
     {
         $_response = [];
-        
+
         if ($place) {
             $_response = [
                 'place_id' => $place->id,

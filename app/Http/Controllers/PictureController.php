@@ -117,7 +117,7 @@ class PictureController extends Controller
             'rating' => $photo->calcRating(),
             'placerating' => $place->calcRating()];
 
-        return response()->json($_response, 200);
+        return response()->json($_response);
     }
 
 }
