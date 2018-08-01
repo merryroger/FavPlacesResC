@@ -23,7 +23,8 @@ Route::prefix('places')->group(function () {
 
     Route::resource('/photo', 'PictureController')->only(['show', 'store', 'destroy']);
 
-    Route::resource('/mobile', 'MobileController')->only(['index', 'show']);
+    Route::get('/mobile', 'MobileController@index');
+    Route::get('/mobile/{place}', 'MobileController@show');
 
 });
 
